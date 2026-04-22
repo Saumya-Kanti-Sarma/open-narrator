@@ -1,0 +1,142 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(31, 31, 30, 0.637);
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+/* Desktop nav links — visible above 768px */
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  transition: color 0.15s;
+}
+
+.navLink:hover {
+  color: #ffffff;
+}
+
+/* Desktop CTA — visible above 768px */
+.desktopCta {
+  display: flex;
+}
+
+/* Mobile right cluster — hamburger + CTA */
+.mobileRight {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #e5e5e5;
+  padding: 0.4rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.hamburger:hover {
+  background: rgba(79, 70, 229, 0.15);
+  border-color: rgba(79, 70, 229, 0.4);
+}
+
+/* Dropdown menu */
+.dropdown {
+  display: none;
+  flex-direction: column;
+  background: rgba(31, 31, 30, 0.637);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0;
+}
+
+.dropdownLink {
+  padding: 0.85rem 1.5rem;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.dropdownLink:hover {
+  background: rgba(79, 70, 229, 0.08);
+  color: #ffffff;
+  border-left-color: #4F46E5;
+}
+
+/* ── Breakpoint: 768px and above ── */
+@media (max-width: 1000px) {
+  .desktopLinks {
+    display: none;
+  }
+
+  .desktopCta {
+    display: block;
+  }
+
+  .mobileRight {
+    display: flex;
+  }
+
+  .dropdown {
+    display: flex;
+  }
+}
+
+@media (max-width:480px) {
+  .mobileRight {
+    display: flex;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+@media (max-width:400px) {
+  .mobileRight {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+
+  }
+}
