@@ -1,7 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primry-font: "Katibeh";
+  --bg-dark: #1f1f1e;
+  --bg-light: #FFE8C9;
+  --text-primary: #292829;
+  --accent-primary: #002A86;
+  --accent-secondary: #4F46E5;
+  --accent-soft: #E0E7FF;
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --gray-100: #f5f5f5;
+  --gray-300: #d4d4d4;
+  --gray-700: #383838;
+  --gray-900: #18181b;
+
+  /* Font roles */
+  --font-rajdhani: var(--font-rajdhani), serif;
+  --font-sans: var(--font-inter), sans-serif;
+  /* Inter — important/UI text */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-rajdhani);
+  font-weight: 700;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--bg-light);
+  font-family: var(--font-body);
 }
