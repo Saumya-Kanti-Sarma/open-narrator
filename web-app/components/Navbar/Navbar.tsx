@@ -10,7 +10,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
-import Button from "./elements/Button";
+import Button from "../elements/Button";
 import styles from "./Navbar.module.css";
 
 /**
@@ -40,11 +40,11 @@ export default function Navbar() {
       <nav className={styles.nav} aria-label="Main navigation">
         {/* Logo */}
         <Link href="/" aria-label="Open Narrator home" className={styles.logo}>
-          <Image src="/logo.svg" alt="Open Narrator logo" width={32} height={32} priority />
+          {/* <Image src="/logo.svg" alt="Open Narrator logo" width={40} height={40} priority /> */}
           <Image
             src="/open-narrator-text.svg"
             alt="Open Narrator"
-            width={140}
+            width={300}
             height={24}
             priority
           />
