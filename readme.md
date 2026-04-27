@@ -1,9 +1,5 @@
 <div align="center">
-  <img src="assets/app-logo.svg" alt="Open Narrator Logo" width="120" />
-  <br />
-  <img src="assets/open-narrator-text.svg" alt="Open Narrator" width="280" />
-
-  <br />
+  <img src="assets/bg1.png" alt="Open Narrator Logo" width="400" />
   <br />
 
   <p><strong>Create Studio-Quality AI Voices — Locally, Privately, Unlimited.</strong></p>
@@ -54,9 +50,9 @@ Open Narrator is a powerful AI-powered Text-to-Speech (TTS) engine that runs **e
 - Assign multiple speakers within a single script
 - Perfect for dialogues, podcasts, storytelling, and audiobooks
 
-### 🎭 Super Emotions
+<!-- ### 🎭 Super Emotions
 - Emotion-aware voice synthesis — not just reading, *performing*
-- Supports: Happiness · Sadness · Anger · Excitement
+- Supports: Happiness · Sadness · Anger · Excitement -->
 
 ### 🎬 Built-in Video Editor
 Turn generated audio into ready-to-publish content:
@@ -73,10 +69,9 @@ Turn generated audio into ready-to-publish content:
 
 | Plan | Price | Usage |
 |------|-------|-------|
-| One-time (India) | ₹249 | Unlimited lifetime generation |
-| One-time (Global) | $9.99 | Unlimited lifetime generation |
-| Premium (optional) | ₹99/month | 10K premium tokens |
-| Extra tokens | ₹39 | Per additional 10K tokens |
+| Free-tire | ₹0.00 | Unlock all features and use it for free for the 1st month|
+| Pro (India) | ₹299 | Unlimited lifetime generation |
+
 
 Most TTS platforms charge per word — costs scale fast. Open Narrator doesn't.
 
@@ -94,16 +89,6 @@ Not a generic API. Designed for real content pipelines:
 
 ---
 
-## Tech Stack
-
-| Component | Details |
-|-----------|---------|
-| Core Engine | Kokoro-TTS (enhanced) |
-| Open Source | ~90% of the codebase |
-| Optimizations | Performance, emotion rendering, multi-voice orchestration |
-
----
-
 ## System Requirements
 
 | | Minimum | Recommended |
@@ -117,44 +102,6 @@ Not a generic API. Designed for real content pipelines:
 
 > Coming soon — beta launching shortly.
 
-```bash
-git clone https://github.com/opennarrator/opennarrator
-cd opennarrator
-npm install
-npm run dev
-```
-
----
-
-## Beta Access
-
-We're launching soon. To get early access:
-
-1. Fill out the beta form at [opennarrator.sh](https://opennarrator.sh)
-2. Join our community channels below
-
----
-
-## Community
-
-Stay in the loop and connect with other creators:
-
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-Join-25D366?style=flat-square&logo=whatsapp&logoColor=white)](#)
-[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](#)
-[![Reddit](https://img.shields.io/badge/Reddit-Follow-FF4500?style=flat-square&logo=reddit&logoColor=white)](#)
-[![Instagram](https://img.shields.io/badge/Instagram-Follow-E1306C?style=flat-square&logo=instagram&logoColor=white)](#)
-
----
-
-## Roadmap
-
-- [ ] More emotional voice models
-- [ ] Multilingual expansion
-- [ ] Plugin ecosystem
-- [ ] Advanced video automation
-- [ ] Cloud sync (optional, privacy-first)
-
----
 
 ## License
 
@@ -172,8 +119,8 @@ If Open Narrator is useful to you:
 
 ---
 
-<div align="center">
+<!-- <div align="center">
   <strong>Open Narrator — Your Voice, Your Control.</strong>
   <br />
   <a href="https://opennarrator.sh">opennarrator.sh</a> · <a href="mailto:contact@opennarrator.sh">contact@opennarrator.sh</a>
-</div>
+</div> -->
