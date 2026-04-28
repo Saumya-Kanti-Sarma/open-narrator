@@ -4,21 +4,16 @@
  * Dependencies: FeatureCard component, react-icons
  */
 
-import { PiMonitorPlayFill, PiTagFill } from "react-icons/pi";
-import { SiAudioboom } from "react-icons/si";
-import { RiEqualizerFill, RiVoiceAiFill } from "react-icons/ri";
+"use client";
+
+import { PiMonitorPlayFill } from "react-icons/pi";
+import { RiVoiceAiFill } from "react-icons/ri";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { HiUserGroup } from "react-icons/hi";
-import { MdTheaterComedy } from "react-icons/md";
 import { IconType } from "react-icons";
 import FeatureCard from "./elements/FeatureCard";
 import Image from "next/image";
-
-/**
- * Component: FeaturesSection
- * Description: Renders a 4-column grid of feature cards
- * Props: none
- */
+import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 
 const features: { Icon: IconType; title: string; bullets: string[] }[] = [
   {
@@ -54,19 +49,22 @@ const features: { Icon: IconType; title: string; bullets: string[] }[] = [
     bullets: [
       "Convert Audios into transcripts",
       "Generate Captions",
-      "Edit your narrated audios to make postable videos ",
+      "Edit your narrated audios to make postable videos",
     ],
-  }
+  },
 ];
 
 export default function FeaturesSection() {
+  const headingRef = useScrollReveal<HTMLDivElement>();
+  const gridRef = useStaggerReveal<HTMLDivElement>();
+
   return (
     <section
       id="features"
       className="py-16 sm:py-24 max-w-[1200px] mx-auto px-4 sm:px-6"
       aria-labelledby="features-heading"
     >
-      <div className="text-center mb-10 sm:mb-16">
+      <div ref={headingRef} className="reveal text-center mb-10 sm:mb-16">
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5">
           <Image
             src={"/logo.svg"}
@@ -88,9 +86,14 @@ export default function FeaturesSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto place-items-center">
+      <div
+        ref={gridRef}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto place-items-center"
+      >
         {features.map((feature) => (
-          <FeatureCard key={feature.title} {...feature} />
+          <div key={feature.title} className="stagger-item reveal w-full">
+            <FeatureCard {...feature} />
+          </div>
         ))}
       </div>
     </section>

@@ -8,6 +8,7 @@
 
 import { MdCheck } from "react-icons/md";
 import Button from "./elements/Button";
+import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 
 /**
  * Component: PricingBlock
@@ -128,13 +129,16 @@ const tierStyles: Record<PlanTier, {
 };
 
 export default function PricingBlock() {
+  const headingRef = useScrollReveal<HTMLDivElement>();
+  const gridRef = useStaggerReveal<HTMLDivElement>();
+
   return (
     <section
       id="pricing"
       className="py-24 max-w-[1200px] mx-auto px-6"
       aria-labelledby="pricing-heading"
     >
-      <div className="text-center mb-16">
+      <div ref={headingRef} className="reveal text-center mb-16">
         <h2
           id="pricing-heading"
           className="text-3xl md:text-4xl font-normal text-[var(--bg-light)] mb-4"
@@ -150,14 +154,14 @@ export default function PricingBlock() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start ">
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {plans.map((plan) => {
           const styles = tierStyles[plan.tier];
           return (
             <article
               key={plan.name}
               aria-disabled={plan.disabled}
-              className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-300 ${plan.disabled
+              className={`stagger-item reveal-pop relative flex flex-col p-8 rounded-2xl border transition-all duration-300 ${plan.disabled
                 ? `bg-[var(--bg-dark)] border-white/5 opacity-40 grayscale pointer-events-none select-none${plan.tier !== "base" ? " max-[448px]:hidden" : ""}`
                 : styles.card
                 } h-full`}

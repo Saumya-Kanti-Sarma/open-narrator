@@ -15,12 +15,7 @@ import Badge from "./elements/Badge";
 import HalftoneBackground from "./elements/HalftoneBackground";
 import VoiceDemo from "./VoiceDemo";
 import Image from "next/image";
-
-/**
- * Component: HeroSection
- * Description: Full-width hero with gradient glow, headline, subtext, CTAs and feature badges
- * Props: none
- */
+import { useParallax } from "@/hooks/useParallax";
 
 const highlights = [
   { icon: <BsLightningChargeFill size={30} color="orange" />, label: "Runs locally (8GB RAM min)" },
@@ -32,6 +27,10 @@ const highlights = [
 export default function HeroSection() {
   const [demoOpen, setDemoOpen] = useState(false);
 
+  const orb1Ref = useParallax<HTMLDivElement>(-0.18);
+  const orb2Ref = useParallax<HTMLDivElement>(0.14);
+  const orb3Ref = useParallax<HTMLDivElement>(-0.1);
+
   return (
     <>
       <section
@@ -40,10 +39,30 @@ export default function HeroSection() {
       >
         <HalftoneBackground />
 
+        {/* Floating parallax orbs */}
+        <div
+          ref={orb1Ref}
+          className="orb orb-1"
+          style={{ top: "15%", left: "8%", willChange: "transform" }}
+          aria-hidden="true"
+        />
+        <div
+          ref={orb2Ref}
+          className="orb orb-2"
+          style={{ top: "30%", right: "6%", willChange: "transform" }}
+          aria-hidden="true"
+        />
+        <div
+          ref={orb3Ref}
+          className="orb orb-3"
+          style={{ bottom: "20%", left: "40%", willChange: "transform" }}
+          aria-hidden="true"
+        />
+
         <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center gap-6 sm:gap-8">
 
           {/* Logo lockup */}
-          <div className="flex flex-col items-center gap-2 -mt-4">
+          <div className="hero-logo flex flex-col items-center gap-2 -mt-4">
             <Image
               src="/open-narrator-full.svg"
               width={420}
@@ -55,19 +74,19 @@ export default function HeroSection() {
 
           {/* Tagline */}
           <p
-            className="text-base sm:text-xl md:text-2xl font-normal text-[var(--warning)] tracking-wide -mt-2"
+            className="hero-tag text-base sm:text-xl md:text-2xl font-normal text-[var(--warning)] tracking-wide -mt-2"
             style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
           >
             "Text-To-Voice and Voice-To-Content"
           </p>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-lg md:text-2xl max-w-3xl">
+          <p className="hero-sub text-base sm:text-lg md:text-2xl max-w-3xl">
             Open Narrator is a <b>software</b> built for content creators that allows them to create AI generated voices and turn that voice into different content formats like <b>short videos</b> for Instagram, YouTube or TikTok. <b>Long videos</b> like podcasts, bedtime stories, movie explanations. <b>Audiobooks</b> and many more...
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
+          <div className="hero-ctas flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
             <Button
               variant="primary"
               ariaLabel="Get early access"
@@ -89,7 +108,7 @@ export default function HeroSection() {
           </div>
 
           {/* Highlight badges */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <div className="hero-badges flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {highlights.map((h) => (
               <Badge key={h.label} className="text-sm sm:text-base px-2 sm:px-3 py-1.5 sm:py-2">
                 {h.icon}

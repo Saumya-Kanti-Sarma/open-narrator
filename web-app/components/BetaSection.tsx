@@ -13,6 +13,7 @@ import Input from "./elements/Input";
 import Select from "./elements/Select";
 import Button from "./elements/Button";
 import { submitBetaSignup } from "@/services/betaSignup.service";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 /**
  * Component: BetaSection
@@ -50,6 +51,8 @@ export default function BetaSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const sectionRef = useScrollReveal<HTMLDivElement>();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -89,7 +92,7 @@ export default function BetaSection() {
       className="py-16 sm:py-24 max-w-[1200px] mx-auto px-4 sm:px-6"
       aria-labelledby="beta-heading"
     >
-      <div className="max-w-xl mx-auto">
+      <div ref={sectionRef} className="reveal max-w-xl mx-auto">
         <div className="text-center mb-10 sm:mb-12">
           <h2
             id="beta-heading"
