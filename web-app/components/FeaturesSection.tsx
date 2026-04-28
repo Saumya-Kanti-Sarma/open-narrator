@@ -71,8 +71,9 @@ export default function FeaturesSection() {
           <Image
             src={"/logo.svg"}
             alt="logo"
-            width={100}
-            height={100}
+            width={0}
+            height={0}
+            sizes="100vw"
             className="grayscale-100 opacity-70"
             style={{ width: "clamp(60px, 10vw, 100px)", height: "auto" }}
           />

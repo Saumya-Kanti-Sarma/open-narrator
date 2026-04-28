@@ -21,12 +21,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <div className="flex items-center gap-2">
-              <Image src="/logo.svg" alt="Open Narrator logo" width={28} height={28} style={{ width: 28, height: "auto" }} />
+              <Image src="/logo.svg" alt="Open Narrator logo" width={0} height={0} sizes="100vw" style={{ width: 28, height: "auto" }} />
               <Image
                 src="/open-narrator-text.svg"
                 alt="Open Narrator"
-                width={120}
-                height={20}
+                width={0}
+                height={0}
+                sizes="100vw"
                 style={{ width: 120, height: "auto" }}
               />
             </div>

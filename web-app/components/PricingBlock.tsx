@@ -158,7 +158,7 @@ export default function PricingBlock() {
               key={plan.name}
               aria-disabled={plan.disabled}
               className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-300 ${plan.disabled
-                ? "bg-[var(--bg-dark)] border-white/5 opacity-40 grayscale pointer-events-none select-none"
+                ? `bg-[var(--bg-dark)] border-white/5 opacity-40 grayscale pointer-events-none select-none${plan.tier !== "base" ? " max-[448px]:hidden" : ""}`
                 : styles.card
                 } h-full`}
             >

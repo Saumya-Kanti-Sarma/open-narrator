@@ -42,8 +42,9 @@ export default function Navbar() {
           <Image
             src="/open-narrator-text.svg"
             alt="Open Narrator"
-            width={300}
-            height={24}
+            width={0}
+            height={0}
+            sizes="100vw"
             priority
             style={{ width: "clamp(140px, 40vw, 300px)", height: "auto" }}
           />
