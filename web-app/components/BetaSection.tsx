@@ -1,20 +1,23 @@
 /**
  * Purpose: Beta access request form section
  * Used in: app/page.tsx
- * Dependencies: Input element, Select element, Button element, react-icons
+ * Dependencies: Input element, Select element, Button element, betaSignup service, react-hot-toast
  */
 
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { MdCelebration } from "react-icons/md";
 import Input from "./elements/Input";
 import Select from "./elements/Select";
 import Button from "./elements/Button";
+import { submitBetaSignup } from "@/services/betaSignup.service";
 
 /**
  * Component: BetaSection
- * Description: Renders the beta signup form with name, occupation, use case, and email fields
+ * Description: Renders the beta signup form — saves to Supabase on submit,
+ *              shows toast feedback, disables button while processing
  * Props: none
  */
 
@@ -46,28 +49,51 @@ export default function BetaSection() {
     email: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: wire up to backend/service
-    setSubmitted(true);
+
+    // Basic client-side validation
+    if (!form.name.trim() || !form.email.trim() || !form.occupation || !form.useCase) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await submitBetaSignup({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        occupation: form.occupation,
+        useCase: form.useCase,
+      });
+      toast.success("You are on the list! We will reach out soon.");
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <section
       id="beta"
-      className="py-24 max-w-[1200px] mx-auto px-6"
+      className="py-16 sm:py-24 max-w-[1200px] mx-auto px-4 sm:px-6"
       aria-labelledby="beta-heading"
     >
       <div className="max-w-xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 sm:mb-12">
           <h2
             id="beta-heading"
-            className="text-3xl md:text-4xl font-normal text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-normal text-white mb-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Be the First to Experience the Future of AI Voice
@@ -106,7 +132,7 @@ export default function BetaSection() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="p-8 rounded-2xl bg-[#282828] border border-white/5 space-y-5"
+            className="p-6 sm:p-8 rounded-2xl bg-[#282828] border border-white/5 space-y-5"
             noValidate
           >
             <Input
@@ -121,7 +147,7 @@ export default function BetaSection() {
             <Select
               id="occupation"
               name="occupation"
-              label="Occupation"
+              label="occupation"
               value={form.occupation}
               onChange={handleChange}
               options={occupationOptions}
@@ -149,10 +175,21 @@ export default function BetaSection() {
             <Button
               type="submit"
               variant="primary"
-              className="w-full justify-center py-4 text-base mt-2"
-              ariaLabel="Request beta access"
+              className="w-full justify-center py-4 text-base mt-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+              ariaLabel={loading ? "Submitting..." : "Request beta access"}
+              disabled={loading}
             >
-              Request Beta Access
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <span
+                    className="w-4 h-4 rounded-full border-2 border-[#1f1f1e] border-t-transparent animate-spin"
+                    aria-hidden="true"
+                  />
+                  Submitting...
+                </span>
+              ) : (
+                "Request Beta Access"
+              )}
             </Button>
           </form>
         )}

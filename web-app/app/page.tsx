@@ -8,7 +8,6 @@ import Navbar from "@/components/Navbar/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import VideoSection from "@/components/VideoSection";
-import WhySection from "@/components/WhySection";
 import PricingBlock from "@/components/PricingBlock";
 import BetaSection from "@/components/BetaSection";
 import CommunitySection from "@/components/CommunitySection";
@@ -18,9 +17,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <FeaturesSection />
+        <VideoSection />
         <PricingBlock />
         <BetaSection />
         <CommunitySection />

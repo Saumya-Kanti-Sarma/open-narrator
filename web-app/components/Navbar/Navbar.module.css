@@ -100,14 +100,14 @@
   border-left-color: #4F46E5;
 }
 
-/* ── Breakpoint: 768px and above ── */
+/* ── Breakpoint: 1000px and below ── */
 @media (max-width: 1000px) {
   .desktopLinks {
     display: none;
   }
 
   .desktopCta {
-    display: block;
+    display: none;
   }
 
   .mobileRight {
@@ -119,24 +119,31 @@
   }
 }
 
-@media (max-width:480px) {
-  .mobileRight {
-    display: flex;
+/* ── Breakpoint: 480px and below ── */
+@media (max-width: 480px) {
+  .logo img {
+    width: 180px !important;
   }
 
   .hamburger {
+    display: flex;
+  }
+}
+
+/* ── Breakpoint: 416px and below ── */
+@media (max-width: 416px) {
+  .mobileRight button:first-child {
     display: none;
   }
 }
 
-@media (max-width:400px) {
-  .mobileRight {
-    display: none;
+/* ── Breakpoint: 360px and below ── */
+@media (max-width: 360px) {
+  .logo img {
+    width: 140px !important;
   }
 
   .nav {
-    display: flex;
-    justify-content: center;
-
+    padding: 0 1rem;
   }
 }

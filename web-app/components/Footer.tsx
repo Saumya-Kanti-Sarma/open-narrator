@@ -16,17 +16,18 @@ import { MdEmail, MdLanguage } from "react-icons/md";
 export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-[#1f1f1e]">
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <div className="flex items-center gap-2">
-              <Image src="/logo.svg" alt="Open Narrator logo" width={28} height={28} />
+              <Image src="/logo.svg" alt="Open Narrator logo" width={28} height={28} style={{ width: 28, height: "auto" }} />
               <Image
                 src="/open-narrator-text.svg"
                 alt="Open Narrator"
                 width={120}
                 height={20}
+                style={{ width: 120, height: "auto" }}
               />
             </div>
             <p
@@ -38,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* Nav links */}
-          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-6">
+          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {["Features", "Pricing", "Community", "Beta Access"].map((item) => (
               <a
                 key={item}
@@ -54,27 +55,27 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col items-center md:items-end gap-2">
             <a
-              href="https://opennarrator.sh"
+              href="https://opennarrator.pages.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-[#a1a1aa] hover:text-white transition-colors"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               <MdLanguage size={14} aria-hidden="true" />
-              opennarrator.sh
+              opennarrator.pages.dev
             </a>
             <a
-              href="mailto:contact@opennarrator.sh"
+              href="mailto:opennarrator@gmail.com"
               className="flex items-center gap-1.5 text-sm text-[#a1a1aa] hover:text-white transition-colors"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               <MdEmail size={14} aria-hidden="true" />
-              contact@opennarrator.sh
+              opennarrator@gmail.com
             </a>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/5 text-center">
+        <div className="mt-8 sm:mt-10 pt-6 border-t border-white/5 text-center">
           <p
             className="text-xs text-[#52525b]"
             style={{ fontFamily: "var(--font-sans)" }}

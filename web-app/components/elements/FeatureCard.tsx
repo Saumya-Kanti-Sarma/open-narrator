@@ -23,11 +23,11 @@ interface FeatureCardProps {
 
 export default function FeatureCard({ Icon, title, bullets }: FeatureCardProps) {
   return (
-    <article className="w-full max-w-90 h-55 group relative p-6 rounded-2xl bg-[#282828] border border-white/5 hover:border-(--warning)/40 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] flex flex-col">
+    <article className="w-full max-w-sm sm:max-w-none h-auto min-h-48 group relative p-5 sm:px-6 mx-1 rounded-2xl bg-[#282828] border border-white/5 hover:border-(--warning)/40 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] flex flex-col">
       <div className="flex justify-center items-center text-(--warning) gap-2 mb-2" aria-hidden="true">
-        <Icon size={40} />
+        <Icon size={36} />
         <h3
-          className="text-lg font-semibold text-white text-center"
+          className="text-base sm:text-lg font-semibold text-white text-center"
           style={{ fontFamily: "var(--font-sans)" }}
         >
           {title}
@@ -36,7 +36,7 @@ export default function FeatureCard({ Icon, title, bullets }: FeatureCardProps) 
       <hr />
       <br />
 
-      <ul className="space-y-2 flex-1 overflow-hidden">
+      <ul className="space-y-2 flex-1">
         {bullets.map((bullet, i) => (
           <li
             key={i}

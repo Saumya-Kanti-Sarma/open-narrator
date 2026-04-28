@@ -63,25 +63,31 @@ export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className="py-24 max-w-300 mx-auto px-6"
+      className="py-16 sm:py-24 max-w-[1200px] mx-auto px-4 sm:px-6"
       aria-labelledby="features-heading"
     >
-      <div className="text-center mb-16">
-        <div className="flex justify-center items-center gap-5">
-          <Image src={"/logo.svg"} alt="logo" width={100} height={100} className="grayscale-100 opacity-70" />
-          <div className="max-w-100">
-            <h1 className="text-left text-5xl mb-1">Core Features</h1>
+      <div className="text-center mb-10 sm:mb-16">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5">
+          <Image
+            src={"/logo.svg"}
+            alt="logo"
+            width={100}
+            height={100}
+            className="grayscale-100 opacity-70"
+            style={{ width: "clamp(60px, 10vw, 100px)", height: "auto" }}
+          />
+          <div className="max-w-xs sm:max-w-sm text-center sm:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl mb-1">Core Features</h1>
             <p
-              className="text-(--warning) max-w-xl mx-auto text-left"
+              className="text-(--warning) mx-auto sm:mx-0"
               style={{ fontFamily: "var(--font-body)" }}>
               Built for creators who need excellent AI voice
             </p>
           </div>
         </div>
-
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-300 mx-auto place-items-center lg:place-items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto place-items-center">
         {features.map((feature) => (
           <FeatureCard key={feature.title} {...feature} />
         ))}

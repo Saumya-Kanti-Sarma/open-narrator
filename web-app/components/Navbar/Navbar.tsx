@@ -22,9 +22,7 @@ import styles from "./Navbar.module.css";
 const navLinks = [
   { label: "Features", href: "#features" },
   { label: "Pricing", href: "#pricing" },
-  { label: "About Us", href: "#about-us" },
   { label: "Community", href: "#community" },
-  { label: "Research", href: "#research" },
 ];
 
 export default function Navbar() {
@@ -47,6 +45,7 @@ export default function Navbar() {
             width={300}
             height={24}
             priority
+            style={{ width: "clamp(140px, 40vw, 300px)", height: "auto" }}
           />
         </Link>
 

@@ -30,10 +30,12 @@ h4 {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--bg-dark);
   color: var(--bg-light);
   font-family: var(--font-body);
+  overflow-x: hidden;
 }

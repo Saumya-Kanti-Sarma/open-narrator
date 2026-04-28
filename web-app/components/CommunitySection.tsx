@@ -4,7 +4,7 @@
  * Dependencies: react-icons
  */
 
-import { FaWhatsapp, FaDiscord, FaRedditAlien, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaDiscord, FaRedditAlien, FaInstagram } from "react-icons/fa";
 import { IconType } from "react-icons";
 
 /**
@@ -21,10 +21,10 @@ const communities: {
   href: string;
 }[] = [
     {
-      name: "WhatsApp",
-      Icon: FaWhatsapp,
-      color: "hover:border-[#25D366]/40 hover:shadow-[0_0_20px_rgba(37,211,102,0.1)]",
-      iconColor: "text-[#25D366]",
+      name: "Twitter",
+      Icon: FaTwitter,
+      color: "hover:border-[#1DA1F2]/40 hover:shadow-[0_0_20px_rgba(29,161,242,0.1)]",
+      iconColor: "text-[#1DA1F2]",
       href: "#",
     },
     {
@@ -52,37 +52,33 @@ const communities: {
 
 export default function CommunitySection() {
   return (
-    <section
-      id="community"
-      className="py-24 bg-[#18181b]"
-      aria-labelledby="community-heading"
-    >
-      <div className="max-w-[1200px] mx-auto px-6 text-center">
+    <section id="community" className="py-16 sm:py-24 bg-[#18181b]" aria-labelledby="community-heading">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 text-center">
         <h2
           id="community-heading"
-          className="text-3xl md:text-4xl font-normal text-white mb-4"
+          className="text-2xl sm:text-3xl md:text-4xl font-normal text-white mb-4"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Join the Open Narrator Community
         </h2>
         <p
-          className="text-[#a1a1aa] mb-12 max-w-md mx-auto"
+          className="text-[#a1a1aa] mb-10 sm:mb-12 max-w-md mx-auto"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Stay updated, share your work, and connect with other creators.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
           {communities.map(({ name, Icon, color, iconColor, href }) => (
             <a
               key={name}
               href={href}
               aria-label={`Join our ${name} community`}
-              className={`flex flex-col items-center gap-3 p-6 rounded-2xl bg-[#282828] border border-white/5 transition-all duration-300 hover:scale-[1.02] ${color}`}
+              className={`flex flex-col items-center gap-2 sm:gap-3 p-4 sm:p-6 rounded-2xl bg-[#282828] border border-white/5 transition-all duration-300 hover:scale-[1.02] ${color}`}
             >
-              <Icon size={28} className={iconColor} aria-hidden="true" />
+              <Icon size={24} className={iconColor} aria-hidden="true" />
               <span
-                className="text-sm font-medium text-[#d4d4d4]"
+                className="text-xs sm:text-sm font-medium text-[#d4d4d4]"
                 style={{ fontFamily: "var(--font-sans)" }}
               >
                 {name}

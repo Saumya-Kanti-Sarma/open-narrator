@@ -25,6 +25,7 @@ interface ButtonProps {
   type?: "button" | "submit";
   className?: string;
   ariaLabel?: string;
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -34,6 +35,7 @@ export default function Button({
   type = "button",
   className = "",
   ariaLabel,
+  disabled = false,
 }: ButtonProps) {
   const base =
     "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1f1f1e] cursor-pointer";
@@ -50,6 +52,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       aria-label={ariaLabel}
+      disabled={disabled}
       className={`${base} ${variants[variant]} ${className}`}
       style={{ fontFamily: "var(--font-sans)" }}
     >

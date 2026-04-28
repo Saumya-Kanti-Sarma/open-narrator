@@ -22,20 +22,20 @@ const useCases: { Icon: IconType; label: string }[] = [
 
 export default function VideoSection() {
   return (
-    <section className="py-24 bg-[#18181b]" aria-labelledby="video-section-heading">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="py-16 sm:py-24 bg-[#18181b]" aria-labelledby="video-section-heading">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text */}
           <div>
             <p
-              className="text-[#4F46E5] text-sm font-semibold uppercase tracking-widest mb-4"
+              className="text-[#4F46E5] text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3 sm:mb-4"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               Video Creation Suite
             </p>
             <h2
               id="video-section-heading"
-              className="text-3xl md:text-4xl font-normal text-white mb-6 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-normal text-white mb-4 sm:mb-6 leading-tight"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               From Script to Content —{" "}
@@ -44,22 +44,22 @@ export default function VideoSection() {
               </span>
             </h2>
             <p
-              className="text-[#a1a1aa] mb-10 leading-relaxed"
+              className="text-[#a1a1aa] mb-8 sm:mb-10 leading-relaxed"
               style={{ fontFamily: "var(--font-body)" }}
             >
               Built-in video editor designed for creators. Turn your AI-generated voice into
               polished, publish-ready content without leaving the app.
             </p>
 
-            <ul className="grid grid-cols-2 gap-4">
+            <ul className="grid grid-cols-2 gap-3 sm:gap-4">
               {useCases.map(({ Icon, label }) => (
                 <li
                   key={label}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-[#282828] border border-white/5"
+                  className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-[#282828] border border-white/5"
                 >
-                  <Icon size={18} className="text-[#4F46E5] shrink-0" aria-hidden="true" />
+                  <Icon size={16} className="text-[#4F46E5] shrink-0" aria-hidden="true" />
                   <span
-                    className="text-sm text-[#d4d4d4] font-medium"
+                    className="text-xs sm:text-sm text-[#d4d4d4] font-medium"
                     style={{ fontFamily: "var(--font-sans)" }}
                   >
                     {label}
@@ -75,7 +75,7 @@ export default function VideoSection() {
             aria-label="Video editor preview"
           >
             <div className="text-center">
-              <FaPhotoVideo size={48} className="text-[#4F46E5]/60 mx-auto mb-4" aria-hidden="true" />
+              <FaPhotoVideo size={40} className="text-[#4F46E5]/60 mx-auto mb-3 sm:mb-4" aria-hidden="true" />
               <p
                 className="text-[#a1a1aa] text-sm"
                 style={{ fontFamily: "var(--font-sans)" }}
