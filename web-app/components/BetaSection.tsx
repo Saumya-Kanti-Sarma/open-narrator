@@ -14,13 +14,7 @@ import Select from "./elements/Select";
 import Button from "./elements/Button";
 import { submitBetaSignup } from "@/services/betaSignup.service";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-/**
- * Component: BetaSection
- * Description: Renders the beta signup form — saves to Supabase on submit,
- *              shows toast feedback, disables button while processing
- * Props: none
- */
+import ParticleBackground from "./elements/ParticleBackground";
 
 const occupationOptions = [
   { value: "student", label: "Student" },
@@ -51,7 +45,6 @@ export default function BetaSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const sectionRef = useScrollReveal<HTMLDivElement>();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
@@ -60,15 +53,11 @@ export default function BetaSection() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
-    // Basic client-side validation
     if (!form.name.trim() || !form.email.trim() || !form.occupation || !form.useCase) {
       toast.error("Please fill in all fields.");
       return;
     }
-
     setLoading(true);
-
     try {
       await submitBetaSignup({
         name: form.name.trim(),
@@ -87,116 +76,109 @@ export default function BetaSection() {
   }
 
   return (
-    <section
-      id="beta"
-      className="py-16 sm:py-24 max-w-[1200px] mx-auto px-4 sm:px-6"
-      aria-labelledby="beta-heading"
-    >
-      <div ref={sectionRef} className="reveal max-w-xl mx-auto">
-        <div className="text-center mb-10 sm:mb-12">
-          <h2
-            id="beta-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-normal text-white mb-4"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Be the First to Experience the Future of AI Voice
-          </h2>
-          <p
-            className="text-[#a1a1aa]"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            We are launching soon. Request early access and we will reach out when it is ready.
-          </p>
-        </div>
-
-        {submitted ? (
-          <div
-            className="p-8 rounded-2xl bg-[#16A34A]/10 border border-[#16A34A]/30 text-center"
-            role="alert"
-          >
-            <MdCelebration
-              size={40}
-              className="text-[#16A34A] mx-auto mb-4"
-              aria-hidden="true"
-            />
-            <h3
-              className="text-xl font-semibold text-white mb-2"
-              style={{ fontFamily: "var(--font-sans)" }}
+    <div className="relative overflow-hidden">
+      <ParticleBackground />
+      <section
+        id="beta"
+        className="relative z-10 py-16 sm:py-24 max-w-[1200px] mx-auto px-4 sm:px-6"
+        aria-labelledby="beta-heading"
+      >
+        <div ref={sectionRef} className="reveal max-w-xl mx-auto">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2
+              id="beta-heading"
+              className="text-2xl sm:text-3xl md:text-4xl font-normal text-white mb-4"
+              style={{ fontFamily: "var(--font-heading)" }}
             >
-              You are on the list!
-            </h3>
-            <p
-              className="text-[#a1a1aa] text-sm"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              We will reach out to {form.email} when beta access opens.
+              Be the First to Experience the Future of AI Voice
+            </h2>
+            <p className="text-[#a1a1aa]" style={{ fontFamily: "var(--font-body)" }}>
+              We are launching soon. Request early access and we will reach out when it is ready.
             </p>
           </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="p-6 sm:p-8 rounded-2xl bg-[#282828] border border-white/5 space-y-5"
-            noValidate
-          >
-            <Input
-              id="name"
-              name="name"
-              label="Name"
-              placeholder="Your name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-            <Select
-              id="occupation"
-              name="occupation"
-              label="occupation"
-              value={form.occupation}
-              onChange={handleChange}
-              options={occupationOptions}
-              required
-            />
-            <Select
-              id="useCase"
-              name="useCase"
-              label="Use Case"
-              value={form.useCase}
-              onChange={handleChange}
-              options={useCaseOptions}
-              required
-            />
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              label="Email"
-              placeholder="you@example.com"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-            <Button
-              type="submit"
-              variant="primary"
-              className="w-full justify-center py-4 text-base mt-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
-              ariaLabel={loading ? "Submitting..." : "Request beta access"}
-              disabled={loading}
+
+          {submitted ? (
+            <div
+              className="p-8 rounded-2xl bg-[#16A34A]/10 border border-[#16A34A]/30 text-center"
+              role="alert"
             >
-              {loading ? (
-                <span className="flex items-center gap-2">
-                  <span
-                    className="w-4 h-4 rounded-full border-2 border-[#1f1f1e] border-t-transparent animate-spin"
-                    aria-hidden="true"
-                  />
-                  Submitting...
-                </span>
-              ) : (
-                "Request Beta Access"
-              )}
-            </Button>
-          </form>
-        )}
-      </div>
-    </section>
+              <MdCelebration size={40} className="text-[#16A34A] mx-auto mb-4" aria-hidden="true" />
+              <h3
+                className="text-xl font-semibold text-white mb-2"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                You are on the list!
+              </h3>
+              <p className="text-[#a1a1aa] text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                We will reach out to {form.email} when beta access opens.
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="p-6 sm:p-8 rounded-2xl bg-[#282828] border border-white/5 space-y-5"
+              noValidate
+            >
+              <Input
+                id="name"
+                name="name"
+                label="Name"
+                placeholder="Your name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+              <Select
+                id="occupation"
+                name="occupation"
+                label="occupation"
+                value={form.occupation}
+                onChange={handleChange}
+                options={occupationOptions}
+                required
+              />
+              <Select
+                id="useCase"
+                name="useCase"
+                label="Use Case"
+                value={form.useCase}
+                onChange={handleChange}
+                options={useCaseOptions}
+                required
+              />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+                placeholder="you@example.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <Button
+                type="submit"
+                variant="primary"
+                className="w-full justify-center py-4 text-base mt-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+                ariaLabel={loading ? "Submitting..." : "Request beta access"}
+                disabled={loading}
+              >
+                {loading ? (
+                  <span className="flex items-center gap-2">
+                    <span
+                      className="w-4 h-4 rounded-full border-2 border-[#1f1f1e] border-t-transparent animate-spin"
+                      aria-hidden="true"
+                    />
+                    Submitting...
+                  </span>
+                ) : (
+                  "Request Beta Access"
+                )}
+              </Button>
+            </form>
+          )}
+        </div>
+      </section>
+    </div>
   );
 }

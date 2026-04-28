@@ -15,7 +15,7 @@ import { MdEmail, MdLanguage } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-[#1f1f1e]">
+    <footer className=" bg-[#18181b]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
           {/* Brand */}
