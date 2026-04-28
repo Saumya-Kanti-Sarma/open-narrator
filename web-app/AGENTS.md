@@ -72,6 +72,9 @@
     Background Light: #FFF7EE
     primary font: "Katibeh"
   Use Image from Next.js everytime. Avoid native `<img>` tag
+  use jersey-10 for headings and use doto for others and use sans for important texts.
+
+
 
 
 8. Naming Conventions
@@ -89,5 +92,7 @@
   Use hooks for data fetching
 
 10. Add aria labels where needed and Ensure keyboard navigation
+
+11. Strictly avoid using emojies and use `react icons` where ever necessary.
 
 <!-- END:nextjs-agent-rules -->

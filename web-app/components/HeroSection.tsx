@@ -40,19 +40,6 @@ export default function HeroSection() {
         {/* Pre-headline badge */}
         <div className="flex justify-between items-center">
 
-
-          {/* Headline */}
-          {/* <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-white text-left"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Create High Quality{" "}
-            <span className="bg-linear-to-r from-[#4F46E5] to-[#818cf8] bg-clip-text text-transparent">
-              AI Voices
-            </span>{" "}
-            With Us...
-          </h1> */}
-
           {/* Logo lockup — plane + wordmark stacked tightly */}
           <div className="flex flex-col items-center gap-2 -mt-4">
             <Image
@@ -66,20 +53,15 @@ export default function HeroSection() {
 
         {/* Tagline — sits just below logo as part of headline flow */}
         <p
-          className="text-2xl md:text-3xl font-normal text-white/80 tracking-wide -mt-2"
-          style={{ fontFamily: "var(--font-heading)" }}
+          className="text-xl md:text-2xl font-normal text-[var(--warning)] tracking-wide -mt-2"
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
         >
-          Give your stories a voice...
+          "Text-To-Voice and Voice-To-Content"
         </p>
 
         {/* Subheadline */}
-        <p
-          className="text-lg md:text-xl text-(--gray-300) max-w-2xl leading-relaxed"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          <Badge className="px-0 py-0"><b className="p-0 text-(--warning)">Open Narrator </b></Badge> is a powerful AI <b>Text-to-Speech</b> engine that runs entirely on your
-          machine. Generate natural, emotional voices for free with{" "}
-          <b>unlimited generation</b> and 100% control of your data.
+        <p className="text-2xl">
+          Open Narrator is a <b >software</b> build for content creators that allows them to create AI generated voices and turn that voice into diffrent content formats like <b >short videos </b> for Instagram, YouTube or TikTok. <b >Long videos </b>  like podcasts, bedtime stories, movie explanation. <b >Audiobooks</b>  and many more...
         </p>
 
         {/* CTAs */}
@@ -93,6 +75,16 @@ export default function HeroSection() {
             className="px-10 py-4 text-base w-full sm:w-auto"
           >
             Get Early Access
+          </Button>
+          <Button
+            variant="secondary"
+            ariaLabel="Get a demo"
+            onClick={() =>
+              document.getElementById("beta")?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="px-10 py-4 text-base w-full sm:w-auto"
+          >
+            Get A Demo
           </Button>
         </div>
 

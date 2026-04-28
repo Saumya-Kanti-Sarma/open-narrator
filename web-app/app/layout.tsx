@@ -21,15 +21,15 @@ const rajdhani = Rajdhani({
 
 
 export const metadata: Metadata = {
-  title: "Open Narrator — Studio-Quality AI Voices, Locally",
+  title: "Open Narrator - Give your stories a voice",
   description:
     "Create studio-quality AI voices locally, privately, and with unlimited generation. No per-token pricing. Powered by Kokoro-TTS.",
-  keywords: ["AI voice", "text to speech", "TTS", "local AI", "privacy", "open source"],
+  keywords: ["AI voice", "text to speech", "TTS", "local AI", "privacy", "open source", "Voice to video editor"],
   openGraph: {
     title: "Open Narrator — Studio-Quality AI Voices, Locally",
     description:
       "Generate natural, emotional AI voices on your own machine. No cloud. No per-token cost.",
-    url: "https://opennarrator.sh",
+    url: "https://opennarrator.com",
     siteName: "Open Narrator",
     type: "website",
   },
@@ -45,6 +45,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${rajdhani.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/logo.svg" type="image/png" sizes="32x32" />
+      </head>
       <body className="min-h-full flex flex-col bg-[#1f1f1e]">{children}</body>
     </html>
   );

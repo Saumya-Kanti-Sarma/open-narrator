@@ -22,8 +22,8 @@ interface BadgeProps {
 export default function Badge({ children, className = "" }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs bg-[var(--bg-light)]/10 border border-[var(--bg-light)]/30 text-[#E0E7FF] ${className}`}
-      style={{ fontFamily: "var(--font-sans)", borderRadius: "6px", fontSize: '16px' }}
+      className={`inline-flex items-center gap-1.5 px-3 py-2  text-xl bg-(--bg-light)/10 border border-(--bg-light)/30 text-[#E0E7FF] rounded-md  ${className}`}
+      style={{ fontFamily: "var(--font-sans)" }}
     >
       {children}
     </span>

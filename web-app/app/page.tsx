@@ -21,8 +21,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <FeaturesSection />
-        <VideoSection />
-        <WhySection />
         <PricingBlock />
         <BetaSection />
         <CommunitySection />
