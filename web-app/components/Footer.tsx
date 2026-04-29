@@ -56,14 +56,14 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col items-center md:items-end gap-2">
             <a
-              href="https://opennarrator.pages.dev"
+              href="https://opennarrator.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-[#a1a1aa] hover:text-white transition-colors"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               <MdLanguage size={14} aria-hidden="true" />
-              opennarrator.pages.dev
+              opennarrator.vercel.app
             </a>
             <a
               href="mailto:opennarrator@gmail.com"
