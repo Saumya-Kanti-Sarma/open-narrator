@@ -83,8 +83,12 @@ export default function Footer() {
           >
             © {new Date().getFullYear()} Open Narrator. Most of the project is open-source.
           </p>
+          <p className="text-left">
+            <a href="http://opennarrator.vercel.app/llm.txt" className="text-xs text-[#52525b]">llm.txt</a>
+          </p>
         </div>
       </div>
+
     </footer>
   );
 }
