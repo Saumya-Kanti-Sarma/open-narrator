@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('./assets/Rajdhani/Rajdhani-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('./assets/Rajdhani/Rajdhani-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('./assets/Rajdhani/Rajdhani-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('./assets/Rajdhani/Rajdhani-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ── Dark theme (default) ── */
+  --bg: #1f1f1e;
+  --bg-surface: #282828;
+  --bg-surface-2: #2a2a29;
+  --bg-border: rgba(255, 255, 255, 0.06);
+  --text: #FFE8C9;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+
+  /* ── Brand / accent (same in both themes) ── */
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --accent: #4F46E5;
+  --gray-300: #d4d4d4;
+  --gray-700: #383838;
+
+  /* ── Font roles ── */
+  --font-rajdhani: 'Rajdhani', serif;
+  --font-sans: system-ui, sans-serif;
+}
+
+/* Light theme — applied when <html data-theme="light"> */
+[data-theme="light"] {
+  --bg: #f5f4f0;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f0ede8;
+  --bg-border: rgba(0, 0, 0, 0.08);
+  --text: #1f1f1e;
+  --text-muted: #52525b;
+  --text-subtle: #71717a;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-rajdhani);
+  font-weight: 700;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
