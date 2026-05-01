@@ -5,6 +5,9 @@ import ThemeProvider from "./components/ThemeProvider";
 import LoadingPage from "./pages/loading/LoadingPage";
 import HomePage from "./pages/home/HomePage";
 import { useEngineStore } from "./store/useEngineStore";
+import TextToVoice from "./pages/TextToVoice/TextToVoice";
+import NarrateDocument from "./pages/NarrateDocument/NarrateDocument";
+import VideoEditor from "./pages/VideoEditor/VideoEditor";
 
 function AppRoutes() {
   const init = useEngineStore((s) => s.init);
@@ -18,9 +21,10 @@ function AppRoutes() {
     <Routes>
       {/* Root — loading screen, auto-navigates to /home when ready */}
       <Route path="/" element={<LoadingPage />} />
-
-      {/* Main app */}
       <Route path="/home" element={<HomePage />} />
+      <Route path="/TextToVoice" element={<TextToVoice />} />
+      <Route path="/NarrateDocument" element={<NarrateDocument />} />
+      <Route path="/VideoEditor" element={<VideoEditor />} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
