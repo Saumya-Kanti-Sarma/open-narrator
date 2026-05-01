@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::{
+    fs,
     io::{BufRead, BufReader, Write},
     path::PathBuf,
     process::{Child, ChildStdin, Command, Stdio},
@@ -130,6 +131,77 @@ fn spawn_engine(app: AppHandle, engine: SharedEngine) {
     }
 }
 
+// ── Tauri command: scans the outputs folder and returns all WAV file paths ───
+
+#[tauri::command]
+fn scan_outputs(app: AppHandle) -> Result<Vec<String>, String> {
+    #[cfg(debug_assertions)]
+    let output_dir = {
+        let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        manifest_dir.parent().expect("no parent").join("outputs")
+    };
+
+    #[cfg(not(debug_assertions))]
+    let output_dir = {
+        app.path_resolver()
+            .app_data_dir()
+            .ok_or("Failed to resolve app data dir")?
+            .join("outputs")
+    };
+
+    if !output_dir.exists() {
+        return Ok(vec![]);
+    }
+
+    let entries = fs::read_dir(&output_dir).map_err(|e| e.to_string())?;
+
+    let mut files: Vec<(std::time::SystemTime, String)> = entries
+        .flatten()
+        .filter(|e| {
+            e.path()
+                .extension()
+                .map(|ext| ext.eq_ignore_ascii_case("wav"))
+                .unwrap_or(false)
+        })
+        .filter_map(|e| {
+            let modified = e.metadata().ok()?.modified().ok()?;
+            let path = e.path().to_string_lossy().to_string();
+            Some((modified, path))
+        })
+        .collect();
+
+    // Sort newest first
+    files.sort_by(|a, b| b.0.cmp(&a.0));
+
+    Ok(files.into_iter().map(|(_, path)| path).collect())
+}
+
+// ── Tauri command: returns the absolute path to the outputs folder ────────────
+// Creates the folder if it doesn't exist.
+
+#[tauri::command]
+fn get_output_dir(app: AppHandle) -> Result<String, String> {
+    #[cfg(debug_assertions)]
+    let output_dir = {
+        let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        manifest_dir
+            .parent()
+            .expect("no parent")
+            .join("outputs")
+    };
+
+    #[cfg(not(debug_assertions))]
+    let output_dir = {
+        app.path_resolver()
+            .app_data_dir()
+            .ok_or("Failed to resolve app data dir")?
+            .join("outputs")
+    };
+
+    fs::create_dir_all(&output_dir).map_err(|e| e.to_string())?;
+    Ok(output_dir.to_string_lossy().to_string())
+}
+
 // ── Tauri command: send a raw command string to the engine's stdin ────────────
 
 #[tauri::command]
@@ -169,7 +241,7 @@ fn main() {
 
     tauri::Builder::default()
         .manage(engine)
-        .invoke_handler(tauri::generate_handler![engine_send, engine_stop])
+        .invoke_handler(tauri::generate_handler![engine_send, engine_stop, get_output_dir, scan_outputs])
         .setup(move |app| {
             spawn_engine(app.handle(), engine_for_setup);
             Ok(())

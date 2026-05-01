@@ -73,7 +73,7 @@
   }
 
   100% {
-    width: 100%;
-    opacity: 0;
+    width: 99%;
+    opacity: 1;
   }
 }

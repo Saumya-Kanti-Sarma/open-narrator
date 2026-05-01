@@ -16,6 +16,27 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "fs": {
+        "all": false,
+        "copyFile": true,
+        "scope": [
+          "$APPDATA/**",
+          "$DOCUMENT/**",
+          "$DOWNLOAD/**",
+          "$DESKTOP/**",
+          "$HOME/**"
+        ]
+      },
+      "dialog": {
+        "all": false,
+        "save": true
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": [
+          "**"
+        ]
       }
     },
     "windows": [
