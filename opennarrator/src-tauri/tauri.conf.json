@@ -41,6 +41,10 @@
         "icons/icon.icns",
         "icons/icon.ico",
         "icons/StoreLogo.png"
+      ],
+      "resources": [
+        "../dist/open-narrator_beta_voice-model.exe",
+        "../dist/voice_model/*"
       ]
     }
   }
