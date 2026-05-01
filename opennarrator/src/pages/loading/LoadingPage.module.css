@@ -1,0 +1,79 @@
+/* LoadingPage — full-screen splash with logo and fake progress bar */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  background: var(--bg);
+  user-select: none;
+}
+
+/* ── Logo lockup ── */
+.logoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.logoIcon {
+  width: 72px;
+  height: auto;
+}
+
+.logoText {
+  width: 200px;
+  height: auto;
+  opacity: 0.9;
+}
+
+/* ── Progress bar ── */
+.barTrack {
+  width: 220px;
+  height: 3px;
+  background: var(--bg-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--warning);
+  animation: fakeLoad 25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+}
+
+/* ── Error state ── */
+.errorText {
+  font-size: 13px;
+  color: #ef4444;
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+/* ── Keyframes ── */
+@keyframes fakeLoad {
+  0% {
+    width: 0%;
+    opacity: 1;
+  }
+
+  70% {
+    width: 85%;
+    opacity: 1;
+  }
+
+  90% {
+    width: 92%;
+    opacity: 1;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
