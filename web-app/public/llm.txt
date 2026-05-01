@@ -1,6 +1,6 @@
 # Open Narrator — LLM Context File
 
-Website: [https://opennarrator.vercel.app/](https://opennarrator.vercel.app/)
+Website: [https://opennarrator.com/](https://opennarrator.com/)
 
 ---
 
@@ -212,8 +212,8 @@ Yes, all processing happens locally. No data is sent to servers.
 
 ## 🔗 Links
 
-* Website: [https://opennarrator.vercel.app](https://opennarrator.vercel.app)
-* Beta Access: [https://opennarrator.vercel.app/#beta](https://opennarrator.vercel.app/#beta)
+* Website: [https://opennarrator.com](https://opennarrator.com)
+* Beta Access: [https://opennarrator.com/#beta](https://opennarrator.com/#beta)
 * Email: [opennarrator@gmail.com](mailto:opennarrator@gmail.com)
 * Twitter: [https://x.com/devloper_saumya](https://x.com/devloper_saumya)
 * Instagram: [https://www.instagram.com/open_narrator/](https://www.instagram.com/open_narrator/)

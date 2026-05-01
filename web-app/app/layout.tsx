@@ -8,7 +8,7 @@ import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-const BASE_URL = "https://opennarrator.vercel.app";
+const BASE_URL = "https://opennarrator.com";
 
 const inter = Inter({
   variable: "--font-inter",

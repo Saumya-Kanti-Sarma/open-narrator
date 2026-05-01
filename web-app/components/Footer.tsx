@@ -56,14 +56,14 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col items-center md:items-end gap-2">
             <a
-              href="https://opennarrator.vercel.app/"
+              href="https://opennarrator.com"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-[#a1a1aa] hover:text-white transition-colors"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               <MdLanguage size={14} aria-hidden="true" />
-              opennarrator.vercel.app
+              opennarrator.com
             </a>
             <a
               href="mailto:opennarrator@gmail.com"
@@ -84,7 +84,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Open Narrator. Most of the project is open-source.
           </p>
           <p className="text-left">
-            <a href="http://opennarrator.vercel.app/llm.txt" className="text-xs text-[#52525b]">llm.txt</a>
+            <a href="https://opennarrator.com/llm.txt" className="text-xs text-[#52525b]">llm.txt</a>
           </p>
         </div>
       </div>

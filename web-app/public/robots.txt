@@ -5,4 +5,4 @@ Allow: /
 Disallow: /_next/
 Disallow: /api/
 
-Sitemap: https://opennarrator.vercel.app/sitemap.xml
+Sitemap: https://opennarrator.com/sitemap.xml

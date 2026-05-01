@@ -113,7 +113,7 @@ export default function OgImage() {
             fontSize: "18px",
           }}
         >
-          opennarrator.pages.dev
+          opennarrator.com
         </div>
       </div>
     ),
