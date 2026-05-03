@@ -42,7 +42,7 @@ Open Narrator is ideal for users searching for:
 ### 🎤 Text-to-Speech (TTS)
 
 * Generate realistic AI voices from English and Hindi text
-* Supports **20+ voices** (American, British, Indian accents)
+* Supports **10+ voices** (American, British, Indian accents)
 * Natural speech output suitable for professional content
 
 ### 🎭 Multi-Speaker & Dialogue Generation
@@ -59,20 +59,6 @@ Open Narrator is ideal for users searching for:
 
 * Listen to PDFs, DOCX, and text files in real time
 * Convert study material into audio
-
-### 🎬 Voice-to-Content Engine
-
-* Convert generated voice into:
-
-  * Short-form videos (Reels, Shorts, TikTok)
-  * Long-form videos (YouTube, podcasts)
-* Built-in caption generation
-
-### ✂️ Built-in Video Editor
-
-* Add captions automatically
-* Edit and export videos directly
-* Create shareable content without external tools
 
 ### 📚 Audiobook Generation
 
@@ -124,13 +110,13 @@ Ideal for users searching:
 * Parallel processing
 * No updates after release
 
-### 💼 Standard Plan (₹299)
+### 💼 Standard Plan (₹599)
 
 * Unlimited voice generation
 * Audio streaming (PDF, DOCX, text)
 * Unlimited audio length
 
-### 🚀 Pro Plan (₹399)
+### 🚀 Pro Plan (₹799)
 
 * All Standard features
 * Built-in video editing toolkit
@@ -215,9 +201,9 @@ Yes, all processing happens locally. No data is sent to servers.
 * Website: [https://opennarrator.com](https://opennarrator.com)
 * Beta Access: [https://opennarrator.com/#beta](https://opennarrator.com/#beta)
 * Email: [opennarrator@gmail.com](mailto:opennarrator@gmail.com)
-* Twitter: [https://x.com/devloper_saumya](https://x.com/devloper_saumya)
-* Instagram: [https://www.instagram.com/open_narrator/](https://www.instagram.com/open_narrator/)
-* Reddit: [https://www.reddit.com/user/saaauumyaa/](https://www.reddit.com/user/saaauumyaa/)
+* Twitter: [https://x.com/opennarrator](https://x.com/opennarrator)
+* Instagram: [https://www.instagram.com/opennarrator/](https://www.instagram.com/opennarrator/)
+* Reddit: [https://www.reddit.com/user/opennarrator/](https://www.reddit.com/user/opennarrator/)
 
 ---
 

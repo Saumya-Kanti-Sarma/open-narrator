@@ -37,7 +37,6 @@ export default function OgImage() {
               "radial-gradient(circle at 60% 40%, rgba(245,158,11,0.08) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(79,70,229,0.08) 0%, transparent 50%)",
           }}
         />
-
         {/* Badge */}
         <div
           style={{
@@ -82,12 +81,12 @@ export default function OgImage() {
             marginBottom: "48px",
           }}
         >
-          Free, local AI voice generator. 20+ voices. No cloud. No per-token cost.
+          Free, local AI voice generator. 10+ voices. No cloud. No per-token cost.
         </div>
 
         {/* Pills */}
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
-          {["100% Private", "20+ Voices", "Unlimited Generation", "Runs Locally"].map((tag) => (
+          {["100% Private", "10+ Voices", "Unlimited Generation", "Runs Locally"].map((tag) => (
             <div
               key={tag}
               style={{

@@ -23,21 +23,21 @@ const communities: {
       Icon: FaTwitter,
       color: "hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]",
       iconColor: "text-white",
-      href: "https://x.com/devloper_saumya",
+      href: "https://x.com/opennarrator",
     },
     {
       name: "Reddit",
       Icon: FaRedditAlien,
       color: "hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]",
       iconColor: "text-white",
-      href: "https://www.reddit.com/user/saaauumyaa/",
+      href: "https://www.reddit.com/user/opennarrator/",
     },
     {
       name: "Instagram",
       Icon: FaInstagram,
       color: "hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]",
       iconColor: "text-white",
-      href: "https://www.instagram.com/open_narrator/",
+      href: "https://www.instagram.com/opennarrator/",
     },
   ];
 

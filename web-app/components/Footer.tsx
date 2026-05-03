@@ -41,14 +41,19 @@ export default function Footer() {
 
           {/* Nav links */}
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            {["Features", "Pricing", "Community", "Beta Access"].map((item) => (
+            {[
+              { label: "Features", href: "/features" },
+              { label: "Pricing", href: "/pricing" },
+              { label: "Community", href: "/community" },
+              { label: "Beta Access", href: "/#beta" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(" ", "-")}`}
+                key={item.label}
+                href={item.href}
                 className="text-sm text-[#a1a1aa] hover:text-white transition-colors"
                 style={{ fontFamily: "var(--font-sans)" }}
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
@@ -84,7 +89,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Open Narrator. Most of the project is open-source.
           </p>
           <p className="text-left">
-            <a href="https://opennarrator.com/llm.txt" className="text-xs text-[#52525b]">llm.txt</a>
+            <a href="https://opennarrator.com/llm.txt" className="text-xs text-[#52525b]/20">llm.txt</a>
+            <a href="https://opennarrator.com/robots.txt" className="text-xs text-[#52525b]/20">robots.txt</a>
           </p>
         </div>
       </div>

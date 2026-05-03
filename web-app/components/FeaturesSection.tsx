@@ -46,11 +46,11 @@ const features: { Icon: IconType; title: string; bullets: string[] }[] = [
   },
   {
     Icon: PiMonitorPlayFill,
-    title: "Inbuild Editor",
+    title: "Docs Streaming",
     bullets: [
-      "Convert Audios into transcripts",
-      "Generate Captions",
-      "Edit your narrated audios to make postable videos",
+      "Stream high quality audios from PDFs",
+      "Listen to unlimited Books, novels etc. ",
+      "Switch multiple voices and speed accordingly.",
     ],
   },
 ];

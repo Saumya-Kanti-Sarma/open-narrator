@@ -151,19 +151,19 @@ const jsonLd = {
     url: BASE_URL,
     email: "opennarrator@gmail.com",
     sameAs: [
-      "https://x.com/devloper_saumya",
-      "https://www.instagram.com/open_narrator/",
-      "https://www.reddit.com/user/saaauumyaa/",
+      "https://x.com/opennarrator",
+      "https://www.instagram.com/opennarrator/",
+      "https://www.reddit.com/user/opennarrator/",
     ],
   },
 
   featureList: [
-    "20+ natural AI voices",
+    "10+ natural AI voices",
     "English and Hindi support",
     "Multi-speaker voice generation",
     "Parallel audio processing",
     "Voice to video generation",
-    "Caption generation",
+    // "Caption generation",
     "Audiobook creation",
     "PDF and document audio streaming",
     "100% offline processing",
@@ -187,7 +187,7 @@ export default function RootLayout({
       className={`${inter.variable} ${rajdhani.variable} h-full antialiased`}
     >
       <head>
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="icon" href="/meta-icon.svg" type="image/svg+xml" />
         <link rel="canonical" href={BASE_URL} />
 
         <meta name="theme-color" content="#1f1f1e" />

@@ -6,6 +6,7 @@
 
 "use client";
 
+import { useState, useEffect } from "react";
 import { MdCheck } from "react-icons/md";
 import Button from "./elements/Button";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
@@ -13,10 +14,20 @@ import WaveBackground from "./elements/WaveBackground";
 
 type PlanTier = "base" | "standard" | "pro";
 
+function useIsIndia(): boolean {
+  const [isIndia, setIsIndia] = useState(true); // default to India to avoid layout shift
+  useEffect(() => {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    setIsIndia(tz === "Asia/Calcutta" || tz === "Asia/Kolkata");
+  }, []);
+  return isIndia;
+}
+
 interface Plan {
   name: string;
   badge: string | null;
   price: string;
+  priceIntl: string | null; // price for non-India users, null = same as price
   priceNote: string;
   description: string;
   features: string[];
@@ -30,17 +41,15 @@ const plans: Plan[] = [
     name: "Base",
     badge: "Beta",
     price: "Free",
+    priceIntl: "Free",
     priceNote: "Lifetime, no updates",
     description: "Get started with no cost. Core voice generation, forever.",
     features: [
       "Unlimited single speaker voice generation",
       "Unlimited multi speaker voice generation",
       "Parallel processing",
-      "Audio streaming from PDFs, docs, text files",
+      "Audio streaming from Docs.",
       "Unlimited audio length",
-      "Video editing toolkit",
-      "Full length captions",
-      "Rephrase and punch up sentences",
     ],
     cta: "Get Started Free",
     tier: "base",
@@ -49,14 +58,15 @@ const plans: Plan[] = [
   {
     name: "Standard",
     badge: "Most Popular",
-    price: "₹299",
+    price: "₹499",
+    priceIntl: "$9.99",
     priceNote: "One-time lifetime access",
     description: "Everything you need for serious audio production.",
     features: [
       "Unlimited single speaker voice generation",
       "Unlimited multi speaker voice generation",
       "Parallel processing",
-      "Audio streaming from PDFs, docs, text files",
+      "Audio streaming from Docs.",
       "Unlimited audio length",
     ],
     cta: "Get Lifetime Access",
@@ -66,14 +76,15 @@ const plans: Plan[] = [
   {
     name: "Pro",
     badge: "Best Value",
-    price: "₹399",
+    price: "₹699",
+    priceIntl: "$14.99",
     priceNote: "One-time lifetime access",
     description: "Full power for creators who need video tools too.",
     features: [
       "Unlimited single speaker voice generation",
       "Unlimited multi speaker voice generation",
       "Parallel processing",
-      "Audio streaming from PDFs, docs, text files",
+      "Audio streaming from Docs.",
       "Unlimited audio length",
       "Video editing toolkit",
       "Full length captions",
@@ -126,6 +137,7 @@ const tierStyles: Record<PlanTier, {
 export default function PricingBlock() {
   const headingRef = useScrollReveal<HTMLDivElement>();
   const gridRef = useStaggerReveal<HTMLDivElement>();
+  const isIndia = useIsIndia();
 
   return (
     <div className="relative overflow-hidden">
@@ -154,6 +166,7 @@ export default function PricingBlock() {
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {plans.map((plan) => {
             const styles = tierStyles[plan.tier];
+            const displayPrice = isIndia || !plan.priceIntl ? plan.price : plan.priceIntl;
             return (
               <article
                 key={plan.name}
@@ -186,7 +199,7 @@ export default function PricingBlock() {
                     className={`text-3xl font-bold ${plan.disabled ? "text-[var(--gray-700)] opacity-20" : styles.price}`}
                     style={{ fontFamily: "var(--font-sans)" }}
                   >
-                    {plan.price}
+                    {displayPrice}
                   </p>
                   <p
                     className={`text-xs text-[var(--gray-700)] mt-0.5 ${plan.disabled ? "opacity-20" : ''}`}
