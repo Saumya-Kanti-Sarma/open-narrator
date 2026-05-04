@@ -110,7 +110,7 @@ export const metadata: Metadata = {
     description:
       "Create unlimited AI voices offline for YouTube, reels, podcasts, and audiobooks. No cloud. No API. 100% private.",
     images: [`${BASE_URL}/og-image.png`],
-    creator: "@devloper_saumya",
+    creator: "@opennarrator",
   },
 
   robots: {
@@ -131,7 +131,7 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: "Open Narrator",
   applicationCategory: "MultimediaApplication",
-  operatingSystem: "Windows, macOS, Linux",
+  operatingSystem: "Windows, macOS",
 
   offers: {
     "@type": "Offer",
