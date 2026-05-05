@@ -84,6 +84,14 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
 
+  icons: {
+    icon: [
+      { url: "/meta-icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/meta-icon.svg",
+    apple: "/meta-icon.svg",
+  },
+
   openGraph: {
     title:
       "Open Narrator — Free Offline AI Voice Generator for Content Creators",
