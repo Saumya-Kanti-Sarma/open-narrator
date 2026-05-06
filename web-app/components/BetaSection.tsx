@@ -6,13 +6,13 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { MdCelebration } from "react-icons/md";
 import Input from "./elements/Input";
 import Select from "./elements/Select";
 import Button from "./elements/Button";
-import { submitBetaSignup } from "@/services/betaSignup.service";
+import { submitBetaSignup, getSignupCount } from "@/services/betaSignup.service";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import ParticleBackground from "./elements/ParticleBackground";
 
@@ -45,7 +45,12 @@ export default function BetaSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [signupCount, setSignupCount] = useState<number | null>(null);
   const sectionRef = useScrollReveal<HTMLDivElement>();
+
+  useEffect(() => {
+    getSignupCount().then(setSignupCount);
+  }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -67,6 +72,7 @@ export default function BetaSection() {
       });
       toast.success("You are on the list! We will reach out soon.");
       setSubmitted(true);
+      setSignupCount((prev) => (prev !== null ? prev + 1 : null));
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       toast.error(message);
@@ -85,6 +91,17 @@ export default function BetaSection() {
       >
         <div ref={sectionRef} className="reveal max-w-xl mx-auto">
           <div className="text-center mb-10 sm:mb-12">
+            {signupCount !== null && signupCount > 0 && (
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#16A34A]/10 border border-[#16A34A]/25 mb-6">
+                <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" aria-hidden="true" />
+                <span
+                  className="text-sm text-[#16A34A] font-medium"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  {signupCount.toLocaleString()} {signupCount === 1 ? "person has" : "people have"} already signed up
+                </span>
+              </div>
+            )}
             <h2
               id="beta-heading"
               className="text-2xl sm:text-3xl md:text-4xl font-normal text-white mb-4"

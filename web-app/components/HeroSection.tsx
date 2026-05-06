@@ -6,7 +6,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { MdLock, MdAllInclusive } from "react-icons/md";
 import { HiMicrophone } from "react-icons/hi";
@@ -23,6 +23,91 @@ const highlights = [
   { icon: <HiMicrophone size={30} color="orange" />, label: "20+ Voices" },
   { icon: <MdAllInclusive size={30} color="orange" />, label: "Unlimited Generation" },
 ];
+
+// Sunday May 10 2026 midnight IST (UTC+5:30)
+const LAUNCH_DATE = new Date("2026-05-10T00:00:00+05:30");
+
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+function getTimeLeft(): TimeLeft {
+  const diff = Math.max(0, LAUNCH_DATE.getTime() - Date.now());
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
+
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeLeft);
+  const launched = LAUNCH_DATE.getTime() <= Date.now();
+
+  useEffect(() => {
+    if (launched) return;
+    const id = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+    return () => clearInterval(id);
+  }, [launched]);
+
+  if (launched) {
+    return (
+      <div className="flex flex-col items-center gap-1">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[#16A34A]"
+          style={{ fontFamily: "var(--font-sans)" }}>
+          Beta is Live!
+        </p>
+      </div>
+    );
+  }
+
+  const units = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Mins", value: timeLeft.minutes },
+    { label: "Secs", value: timeLeft.seconds },
+  ];
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <p
+        className="text-xs font-semibold uppercase tracking-widest text-[#F59E0B]"
+        style={{ fontFamily: "var(--font-sans)" }}
+      >
+        Launching Beta Version
+      </p>
+      <div className="flex items-center gap-2 sm:gap-3" aria-label="Countdown to beta launch" role="timer">
+        {units.map(({ label, value }, i) => (
+          <div key={label} className="flex items-center gap-2 sm:gap-3">
+            <div className="flex flex-col items-center">
+              <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-xl bg-[#282828] border border-white/10 flex items-center justify-center">
+                <span
+                  className="text-2xl sm:text-3xl font-bold text-[#FFE8C9] tabular-nums"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  {String(value).padStart(2, "0")}
+                </span>
+              </div>
+              <span
+                className="text-[10px] text-[#a1a1aa] mt-1 uppercase tracking-wider"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                {label}
+              </span>
+            </div>
+            {i < units.length - 1 && (
+              <span className="text-2xl font-bold text-[#F59E0B] mb-4 select-none" aria-hidden="true">:</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function HeroSection() {
   const [demoOpen, setDemoOpen] = useState(false);
@@ -77,12 +162,15 @@ export default function HeroSection() {
             className="hero-tag text-base sm:text-xl md:text-2xl font-normal text-[var(--warning)] tracking-wide -mt-2"
             style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
           >
-            "Text-To-Voice and Voice-To-Content"
+            "Free Offline AI Voice Generator for Content Creators"
           </p>
+
+          {/* Countdown timer */}
+          <CountdownTimer />
 
           {/* Subheadline */}
           <p className="hero-sub text-base sm:text-lg md:text-2xl max-w-3xl">
-            Open Narrator is a <b>software</b> built for content creators that allows them to create AI generated voices and turn that voice into different content formats like <b>short videos</b> for Instagram, YouTube or TikTok. <b>Long videos</b> like podcasts, bedtime stories, movie explanations. <b>Audiobooks</b> and many more...
+            Open Narrator is a <b>software</b> built for content creators that allows them to create high quality AI generated voices for free...
           </p>
 
           {/* CTAs */}

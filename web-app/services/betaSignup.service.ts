@@ -35,3 +35,15 @@ export async function submitBetaSignup(payload: BetaSignupPayload): Promise<void
     throw new Error(error.message);
   }
 }
+
+/**
+ * Returns the total number of beta signups.
+ */
+export async function getSignupCount(): Promise<number> {
+  const { count, error } = await supabase
+    .from("open_narrator_beta_use")
+    .select("*", { count: "exact", head: true });
+
+  if (error) return 0;
+  return count ?? 0;
+}

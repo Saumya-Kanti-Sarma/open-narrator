@@ -84,14 +84,6 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
 
-  icons: {
-    icon: [
-      { url: "/meta-icon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/meta-icon.svg",
-    apple: "/meta-icon.svg",
-  },
-
   openGraph: {
     title:
       "Open Narrator — Free Offline AI Voice Generator for Content Creators",
@@ -195,7 +187,6 @@ export default function RootLayout({
       className={`${inter.variable} ${rajdhani.variable} h-full antialiased`}
     >
       <head>
-        <link rel="icon" href="/meta-icon.svg" type="image/svg+xml" />
         <link rel="canonical" href={BASE_URL} />
 
         <meta name="theme-color" content="#1f1f1e" />
