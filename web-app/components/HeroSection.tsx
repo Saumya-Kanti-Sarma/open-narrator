@@ -1,15 +1,16 @@
 /**
  * Purpose: Landing page hero section with headline, subheadline, CTAs and highlight badges
  * Used in: app/page.tsx
- * Dependencies: Button element, Badge element, HalftoneBackground element, VoiceDemo, react-icons
+ * Dependencies: Button element, Badge element, HalftoneBackground element, VoiceDemo, react-icons, react-hot-toast
  */
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BsLightningChargeFill } from "react-icons/bs";
-import { MdLock, MdAllInclusive } from "react-icons/md";
+import { MdLock, MdAllInclusive, MdWarningAmber, MdClose } from "react-icons/md";
 import { HiMicrophone } from "react-icons/hi";
+import toast from "react-hot-toast";
 import Button from "./elements/Button";
 import Badge from "./elements/Badge";
 import HalftoneBackground from "./elements/HalftoneBackground";
@@ -26,6 +27,10 @@ const highlights = [
 
 // Sunday May 10 2026 midnight IST (UTC+5:30)
 const LAUNCH_DATE = new Date("2026-05-10T00:00:00+05:30");
+
+const WINDOWS_DOWNLOAD_URL = process.env.NEXT_PUBLIC_WINDOWS_DOWNLOAD_URL;
+
+// ── Countdown ──────────────────────────────────────────────────────────────
 
 interface TimeLeft {
   days: number;
@@ -54,16 +59,7 @@ function CountdownTimer() {
     return () => clearInterval(id);
   }, [launched]);
 
-  if (launched) {
-    return (
-      <div className="flex flex-col items-center gap-1">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#16A34A]"
-          style={{ fontFamily: "var(--font-sans)" }}>
-          Beta is Live!
-        </p>
-      </div>
-    );
-  }
+  if (launched) return null;
 
   const units = [
     { label: "Days", value: timeLeft.days },
@@ -80,7 +76,11 @@ function CountdownTimer() {
       >
         Launching Beta Version
       </p>
-      <div className="flex items-center gap-2 sm:gap-3" aria-label="Countdown to beta launch" role="timer">
+      <div
+        className="flex items-center gap-2 sm:gap-3"
+        aria-label="Countdown to beta launch"
+        role="timer"
+      >
         {units.map(({ label, value }, i) => (
           <div key={label} className="flex items-center gap-2 sm:gap-3">
             <div className="flex flex-col items-center">
@@ -100,7 +100,12 @@ function CountdownTimer() {
               </span>
             </div>
             {i < units.length - 1 && (
-              <span className="text-2xl font-bold text-[#F59E0B] mb-4 select-none" aria-hidden="true">:</span>
+              <span
+                className="text-2xl font-bold text-[#F59E0B] mb-4 select-none"
+                aria-hidden="true"
+              >
+                :
+              </span>
             )}
           </div>
         ))}
@@ -109,8 +114,186 @@ function CountdownTimer() {
   );
 }
 
+// ── Download modal ─────────────────────────────────────────────────────────
+
+function DownloadModal({ onClose }: { onClose: () => void }) {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Close on overlay click
+  function handleOverlayClick(e: React.MouseEvent<HTMLDivElement>) {
+    if (e.target === overlayRef.current) onClose();
+  }
+
+  // Close on Escape
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  function handleMacClick() {
+    toast("Mac version coming soon!", {
+      icon: <Image
+        src="/apple.svg"
+        alt=""
+        width={28}
+        height={28}
+      />,
+      style: {
+        background: "#282828",
+        color: "#FFE8C9",
+        border: "1px solid rgba(255,255,255,0.08)",
+        fontFamily: "var(--font-inter), sans-serif",
+        fontSize: "14px",
+      },
+    });
+  }
+
+  return (
+    <div
+      ref={overlayRef}
+      onClick={handleOverlayClick}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="download-modal-title"
+    >
+      <div className="relative w-full max-w-md bg-[#1f1f1e] border border-white/10 rounded-2xl p-7 shadow-2xl">
+
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          aria-label="Close download dialog"
+          className="absolute top-4 right-4 text-[#a1a1aa] hover:text-[#FFE8C9] transition-colors"
+        >
+          <MdClose size={22} />
+        </button>
+
+        {/* Header */}
+        <div className="mb-6 text-center">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest text-[#16A34A] mb-2"
+            style={{ fontFamily: "var(--font-sans)" }}
+          >
+            Beta is Live
+          </p>
+          <h2
+            id="download-modal-title"
+            className="text-2xl font-bold text-[#FFE8C9]"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Download Open Narrator
+          </h2>
+          <p
+            className="text-sm text-[#a1a1aa] mt-2"
+            style={{ fontFamily: "var(--font-sans)" }}
+          >
+            Choose your platform to get started
+          </p>
+        </div>
+
+        {/* Download buttons */}
+        <div className="flex flex-col gap-3 mb-6">
+
+          {/* Windows */}
+          <a
+            href={WINDOWS_DOWNLOAD_URL}
+            download
+            className="flex items-center gap-4 px-5 py-4 rounded-xl bg-[#282828] border border-white/10 hover:border-[#4F46E5]/50 hover:bg-[#282828]/80 transition-all duration-200 group"
+            aria-label="Download for Windows"
+          >
+            <Image
+              src="/windows.svg"
+              alt=""
+              width={32}
+              height={32}
+              className="shrink-0"
+              aria-hidden="true"
+            />
+            <div className="text-left">
+              <p
+                className="text-sm font-semibold text-[#FFE8C9] group-hover:text-white transition-colors"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                Download for Windows
+              </p>
+              <p
+                className="text-xs text-[#a1a1aa]"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                v0.1.0 BETA · x64 · .exe installer
+              </p>
+            </div>
+          </a>
+
+          {/* Mac — dimmed, coming soon */}
+          <button
+            onClick={handleMacClick}
+            className="flex items-center gap-4 px-5 py-4 rounded-xl bg-[#282828] border border-white/5 opacity-40 cursor-not-allowed transition-all duration-200"
+            aria-label="Mac version coming soon"
+          >
+            <Image
+              src="/apple.svg"
+              alt=""
+              width={32}
+              height={32}
+              className="shrink-0 opacity-60"
+              aria-hidden="true"
+            />
+            <div className="text-left">
+              <p
+                className="text-sm font-semibold text-[#a1a1aa]"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                Download for Mac
+              </p>
+              <p
+                className="text-xs text-[#a1a1aa]"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                Coming soon
+              </p>
+            </div>
+          </button>
+        </div>
+
+        {/* Security note */}
+        <div className="flex gap-3 p-4 rounded-xl bg-[#F59E0B]/8 border border-[#F59E0B]/20">
+          <MdWarningAmber
+            size={20}
+            className="text-[#F59E0B] shrink-0 mt-0.5"
+            aria-hidden="true"
+          />
+          <div>
+            <p
+              className="text-xs font-semibold text-[#F59E0B] mb-1"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              Windows may show a security alert
+            </p>
+            <p
+              className="text-xs text-[#a1a1aa] leading-relaxed"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              Since we just launched, Windows SmartScreen may flag the installer as unrecognized — this is normal for new apps with limited download history. Open Narrator is{" "}
+              <span className="text-[#FFE8C9]">completely safe to download</span>. We only request your location for beta analytics purposes. Click{" "}
+              <span className="text-[#FFE8C9]">"More info → Run anyway"</span> to proceed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Main component ─────────────────────────────────────────────────────────
+
 export default function HeroSection() {
   const [demoOpen, setDemoOpen] = useState(false);
+  const [downloadOpen, setDownloadOpen] = useState(false);
+  const launched = LAUNCH_DATE.getTime() <= Date.now();
 
   const orb1Ref = useParallax<HTMLDivElement>(-0.18);
   const orb2Ref = useParallax<HTMLDivElement>(0.14);
@@ -165,7 +348,7 @@ export default function HeroSection() {
             "Free Offline AI Voice Generator for Content Creators"
           </p>
 
-          {/* Countdown timer */}
+          {/* Countdown timer — hidden once launched */}
           <CountdownTimer />
 
           {/* Subheadline */}
@@ -177,13 +360,17 @@ export default function HeroSection() {
           <div className="hero-ctas flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
             <Button
               variant="primary"
-              ariaLabel="Get early access"
-              onClick={() =>
-                document.getElementById("beta")?.scrollIntoView({ behavior: "smooth" })
-              }
+              ariaLabel={launched ? "Download Open Narrator" : "Get early access"}
+              onClick={() => {
+                if (launched) {
+                  setDownloadOpen(true);
+                } else {
+                  document.getElementById("beta")?.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
               className="px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base w-full sm:w-auto"
             >
-              Get Early Access
+              {launched ? "Download Now" : "Get Early Access"}
             </Button>
             <Button
               variant="secondary"
@@ -208,6 +395,8 @@ export default function HeroSection() {
       </section>
 
       <VoiceDemo isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
+
+      {downloadOpen && <DownloadModal onClose={() => setDownloadOpen(false)} />}
     </>
   );
 }
