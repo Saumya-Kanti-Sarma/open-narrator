@@ -1,0 +1,150 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 56px;
+  height: 100dvh;
+  padding: 10px 0;
+  overflow: hidden;
+  border-right: 1px solid var(--border-color);
+  background: var(--sidebar-background);
+  transition: width 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.side-bar.open {
+  width: 300px;
+  align-items: stretch;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  flex-shrink: 0;
+  margin: 4px 0 8px;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.logo-area img {
+  display: block;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  border-radius: 7px;
+  background: #17191a;
+  object-fit: contain;
+}
+
+.logo-area h1 {
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.side-bar:not(.open) .logo-area {
+  justify-content: center;
+  padding: 0;
+}
+
+.side-bar:not(.open) .logo-area h1 {
+  display: none;
+}
+
+.side-bar nav,
+.theme-and-login-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+  padding: 10px;
+}
+
+.side-bar.open nav {
+  align-items: stretch;
+}
+
+.nav-btn,
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.nav-btn:hover,
+.profile-btn:hover {
+  background: var(--hover-background);
+}
+
+.theme-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-images {
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  filter: var(--invert);
+}
+
+.all-chats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 20px;
+}
+
+.all-chats h3 {
+  padding: 8px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chat-item {
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 8px;
+  background: transparent;
+  color: var(--text-chat);
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-item:hover {
+  background: var(--hover-background);
+}
+
+.profile-btn {
+  margin: 10px;
+}

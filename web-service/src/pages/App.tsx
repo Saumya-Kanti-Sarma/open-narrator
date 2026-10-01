@@ -1,9 +1,17 @@
-import "./App.css"
+import { useSelector } from "react-redux";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import type { RootState } from "../store/store";
+import "./App.css";
 
 const App = () => {
-  return (
-    <div>App</div>
-  )
-}
+  const theme = useSelector((state: RootState) => state.theme.mode);
 
-export default App
+  return (
+    <main className="app-main" data-theme={theme}>
+      <Sidebar />
+      <div className="content-area"></div>
+    </main>
+  );
+};
+
+export default App;
