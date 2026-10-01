@@ -1,0 +1,15 @@
+:root {
+  --inter: "inter"
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--inter);
+}
+
+body {
+  height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+}
