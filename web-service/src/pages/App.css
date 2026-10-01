@@ -37,6 +37,7 @@
 .content-area {
   flex: 1;
   height: 100dvh;
+  width: 100vw;
   background: var(--workspace-background);
   transition: background-color 0.2s ease;
 }

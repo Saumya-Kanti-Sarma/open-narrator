@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import type { RootState } from "../store/store";
 import "./App.css";
+import TextArea from "../Components/TextArea/TextArea";
 
 const App = () => {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -9,7 +10,9 @@ const App = () => {
   return (
     <main className="app-main" data-theme={theme}>
       <Sidebar />
-      <div className="content-area"></div>
+      <div className="content-area">
+        <TextArea />
+      </div>
     </main>
   );
 };
