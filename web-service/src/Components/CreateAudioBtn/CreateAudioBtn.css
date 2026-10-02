@@ -1,0 +1,52 @@
+#CreateAudioBtn {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  transform: translateX(-50%);
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--text-primary);
+  background-color: transparent;
+  color: var(--text-primary);
+  font-size: 20px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: scale 0.25s ease, opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+#CreateAudioBtn.is-visible {
+  opacity: 0.55;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+#CreateAudioBtn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: 110%;
+  width: 35%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: left 0.6s ease;
+}
+
+#CreateAudioBtn:hover {
+  scale: 1.05;
+  opacity: 1;
+}
+
+#CreateAudioBtn:hover::before {
+  left: -40%;
+}

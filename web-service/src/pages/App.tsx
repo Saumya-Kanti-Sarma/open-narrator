@@ -3,6 +3,7 @@ import Sidebar from "../Components/Sidebar/Sidebar";
 import type { RootState } from "../store/store";
 import "./App.css";
 import TextArea from "../Components/TextArea/TextArea";
+import CreateAudioBtn from "../Components/CreateAudioBtn/CreateAudioBtn";
 
 const App = () => {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -12,6 +13,7 @@ const App = () => {
       <Sidebar />
       <div className="content-area">
         <TextArea />
+        <CreateAudioBtn />
       </div>
     </main>
   );
